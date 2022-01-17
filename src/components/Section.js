@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Slide } from "react-awesome-reveal";
 
 function Section({
   title,
@@ -10,15 +11,19 @@ function Section({
 }) {
   return (
     <Wrap bgImage={backgroundImg}>
-      <ItemText>
-        <h1>{title}</h1>
-        <p>{description}</p>
-      </ItemText>
+      <Slide triggerOnce direction="up">
+        <ItemText>
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </ItemText>
+      </Slide>
       <Buttons>
-        <ButtonGroup>
-          <LeftButton>{leftBtnText}</LeftButton>
-          {rightBtnText && <RightButton>{rightBtnText}</RightButton>}
-        </ButtonGroup>
+        <Slide triggerOnce direction="up">
+          <ButtonGroup>
+            <LeftButton>{leftBtnText}</LeftButton>
+            {rightBtnText && <RightButton>{rightBtnText}</RightButton>}
+          </ButtonGroup>
+        </Slide>
         <DownArrow src="/images/down-arrow.svg" />
       </Buttons>
     </Wrap>
@@ -44,6 +49,7 @@ const Wrap = styled.div`
 const ItemText = styled.div`
   padding-top: 15vh;
   text-align: center;
+  z-index: 10;
 `;
 
 const ButtonGroup = styled.div`
